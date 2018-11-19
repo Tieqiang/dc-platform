@@ -6,7 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "com.dchealth")
 public class SystemProperties {
 
-    private boolean debug ;
+    private boolean debug=false ;
+
+    private String exceptUrls="";
 
     private AuthentionProperties authention ;
 
@@ -24,5 +26,13 @@ public class SystemProperties {
 
     public void setDebug(boolean debug) {
         this.debug = debug;
+    }
+
+    public String getExceptUrls() {
+        return exceptUrls;
+    }
+
+    public void setExceptUrls(String exceptUrls) {
+        this.exceptUrls = exceptUrls;
     }
 }

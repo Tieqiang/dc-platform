@@ -27,53 +27,59 @@ public class AuthPremissionEvaluator implements CustomPermissionEvaluator {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private SystemProperties systemProperties ;
+    private SystemProperties systemProperties;
 
     public boolean hasPermission(Authentication authentication, Object permission) {
         return this.hasPermission(authentication, null, permission);
     }
 
-    public boolean hasPermission(Authentication authentication,Object invokeTarget,Object targetDomainObject,Object permission){
+    public boolean hasPermission(Authentication authentication, Object invokeTarget, Object targetDomainObject, Object permission) {
         String name = "";
 
+
         Object principal = authentication.getPrincipal();
-        if(principal instanceof User){
-            if("user".equals(((User) principal).getUsername())&&"password".equals(((User) principal).getPassword())&&systemProperties.isDebug()){
-                return true ;
+
+        if (principal instanceof String &&principal.equals("anonymousUser")) {
+            //不需要认证
+            return true ;
+        }
+
+        if (principal instanceof User) {
+            if ("user".equals(((User) principal).getUsername()) && "password".equals(((User) principal).getPassword()) && systemProperties.isDebug()) {
+                return true;
             }
         }
 
         PriResource annotation = invokeTarget.getClass().getAnnotation(PriResource.class);
         String resourceCode = annotation.resourceCode();
 
-        if(StringUtils.isEmpty(resourceCode)){
+        if (StringUtils.isEmpty(resourceCode)) {
             name = invokeTarget.getClass().getName();
-        }else{
-            name= resourceCode;
+        } else {
+            name = resourceCode;
         }
 
-        logger.info("访问的资源类为："+name);
-        String userName = ((SysUser) authentication.getPrincipal()).getUsername();
-        if(StringUtils.equals(userName,systemProperties.getAuthention().getMockUser())){
+        logger.info("访问的资源类为：" + name);
+        String userName = ((SysUser) principal).getUsername();
+        if (StringUtils.equals(userName, systemProperties.getAuthention().getMockUser())) {
             //如果是单元测试用户则直接执行
-            return true ;
+            return true;
         }
         SysUser sysUser = null;
         Set<String> permissions = new HashSet<>();
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
             String auths = grantedAuthority.getAuthority();
-            String[] split = StringUtils.split(auths,",");
+            String[] split = StringUtils.split(auths, ",");
             for (String str : split) {
                 permissions.add(str);
             }
         }
-        if (permissions.contains(name+":"+permission)) {
+        if (permissions.contains(name + ":" + permission)) {
             return true;
         }
         return false;
     }
-
 
 
     @Override

@@ -8,6 +8,7 @@ import com.dchealth.handler.DcAuthenticationEntryPoint;
 import com.dchealth.handler.FailHandler;
 import com.dchealth.handler.SuccessLoginHandler;
 import com.dchealth.service.sys.SysUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,6 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private SuccessLoginHandler successLoginHandler;
+
+    @Autowired
+    private SystemProperties systemProperties ;
+
 
     @Autowired
     private FailHandler failHandler;
@@ -71,7 +77,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler)
+        String exceptUrls = systemProperties.getExceptUrls();
+        if(StringUtils.isNotEmpty(exceptUrls)){
+
+        }
+        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry expressionInterceptUrlRegistry = http.exceptionHandling().accessDeniedHandler(accessDeniedHandler)
                 .authenticationEntryPoint(dcAuthenticationEntryPoint).and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(validCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
@@ -80,7 +90,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(successLoginHandler).failureHandler(failHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login.html").permitAll()
+                .antMatchers("/login.html").permitAll();
+        //添加排除验证的接口
+        expressionInterceptUrlRegistry.antMatchers(exceptUrls.split(",")).permitAll();
+        expressionInterceptUrlRegistry
                 .anyRequest().authenticated();
         http.csrf().disable();
     }
