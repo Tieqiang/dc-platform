@@ -2,6 +2,7 @@ package com.dchealth.controller;
 
 import com.dchealth.annotation.PriOperation;
 import com.dchealth.annotation.PriResource;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ import java.io.IOException;
 
 @RestController
 @PriResource(resourceName = "登录控制",resourceCode = "login")
-
+@Api(description = "登录相关")
 public class LoginController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());

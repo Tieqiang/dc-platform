@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,17 +28,10 @@ public class UserController {
 
     @PriOperation(operationName = "用户注册",operationCode = "user:sign")
     @PostMapping(path = "/api/user",consumes = {"application/x-www-form-urlencoded"})
-    public SysUser singup(SysUser sysUser){
+    public SysUser singup(@RequestBody SysUser sysUser){
         sysUser.setPassword(new BCryptPasswordEncoder().encode(sysUser.getPassword()));
         return sysUserService.merge(sysUser);
     }
 
-
-    @GetMapping(path = "/api/find-all-by-page")
-    @PriOperation(operationName = "查询用户",operationCode = "user:search")
-    @PreAuthorize("hasPermission('','user:search')")
-    public Page<SysUser> findALL(Pageable page){
-        return sysUserService.findAllByPage(page);
-    }
 
 }
