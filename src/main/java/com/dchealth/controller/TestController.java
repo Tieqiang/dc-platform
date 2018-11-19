@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @PriResource(resourceName = "测试资源",resourceCode = "test")
 public class TestController {
 
-    String testController="testController1" ;
     @GetMapping(path = {"/api/hello","api/hello1"},produces = "application/json")
     @PriOperation(operationName = "打招呼",operationCode = "hello")
     @PreAuthorize("hasPermission('test','hello')")
