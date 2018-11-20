@@ -43,6 +43,7 @@ public class SuccessLoginHandler implements AuthenticationSuccessHandler {
         response.setContentType("text/plain");
         response.getWriter().write(token);
         response.setHeader(systemProperties.getAuthention().getName(),systemProperties.getAuthention().getPrefix()+token);
-
+//      //支持前端跨域请求的时候header中添加授权的header
+        response.addHeader("Access-Control-Expose-Headers",systemProperties.getAuthention().getName());
     }
 }

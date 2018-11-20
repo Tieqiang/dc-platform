@@ -23,6 +23,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -73,14 +79,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return userDetailsService;
     }
 
+    /**
+     * 配置允许跨域访问的类型
+     * @return
+     */
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList(systemProperties.getCors().getAllowedOrigins().split(",")));
+        configuration.setAllowedMethods(Arrays.asList(systemProperties.getCors().getAllowedMethods().split(",")));
+        configuration.setAllowedHeaders(Arrays.asList(systemProperties.getCors().getAllowedHeaders().split(",")));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        String exceptUrls = systemProperties.getExceptUrls();
-        if(StringUtils.isNotEmpty(exceptUrls)){
-
-        }
+        http.cors() ;
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry expressionInterceptUrlRegistry = http.exceptionHandling().accessDeniedHandler(accessDeniedHandler)
                 .authenticationEntryPoint(dcAuthenticationEntryPoint).and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(validCodeFilter, UsernamePasswordAuthenticationFilter.class)
@@ -91,8 +107,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login.html").permitAll();
-        //添加排除验证的接口
-        expressionInterceptUrlRegistry.antMatchers(exceptUrls.split(",")).permitAll();
+
+        String exceptUrls = systemProperties.getExceptUrls();
+        if(StringUtils.isNotEmpty(exceptUrls)){
+            //添加排除验证的接口
+            expressionInterceptUrlRegistry.antMatchers(exceptUrls.split(",")).permitAll();
+        }
+
+
+        expressionInterceptUrlRegistry.requestMatchers(CorsUtils::isCorsRequest).permitAll();//解决跨域请求
         expressionInterceptUrlRegistry
                 .anyRequest().authenticated();
         http.csrf().disable();
