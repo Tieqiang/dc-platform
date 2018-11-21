@@ -31,9 +31,7 @@ public class JwtUtils {
      */
     public String createToken(UserDetails userDetails){
         String username = userDetails.getUsername();
-
         Map<String, Object> claims =new HashMap<>();
-
         Iterator<? extends GrantedAuthority> iterator = userDetails.getAuthorities().iterator();
         StringBuilder stringBuilder = new StringBuilder();
         while (iterator.hasNext()){
@@ -41,19 +39,15 @@ public class JwtUtils {
             stringBuilder.append(authority.getAuthority());
             stringBuilder.append(",");
         }
-
         String value = stringBuilder.toString();
         if(StringUtils.isNotEmpty(value)){
             value=value.substring(0,value.length()-1);
         }
         claims.put("authority", value);
-
-
         String compact = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS256, systemProperties.getAuthention().getSceret())
                 .setExpiration(new Date(System.currentTimeMillis() + systemProperties.getAuthention().getExpire()))
                 .setSubject(username).compact();
         return compact;
-
     }
 
 
