@@ -41,5 +41,11 @@ public interface ResourceRepo extends PagingAndSortingRepository<Resource, Strin
      */
     boolean existsResourceByResourceNameAndOperationCodeAndOperationNameAndSysFlag(String resourceName,String operationCode,String operationName,String sysFlag);
 
+    /**
+     * 根据OperaitonCode获取Resource
+     * @param operationCode
+     * @return
+     */
+    Resource findResourceByOperationCode(String operationCode);
 
 }

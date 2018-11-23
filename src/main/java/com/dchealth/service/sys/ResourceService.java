@@ -47,4 +47,13 @@ public class ResourceService extends BaseService<Resource,String,ResourceRepo> {
 
     }
 
+    /**
+     * 根据OperationCode获取资源
+     * @param operationCode
+     * @return
+     */
+    public Resource getResourceByOperationCode(String operationCode){
+        return resourceRepo.findResourceByOperationCode(operationCode);
+    }
+
 }

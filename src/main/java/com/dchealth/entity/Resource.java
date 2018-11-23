@@ -20,7 +20,7 @@ public class Resource extends BaseEntity {
     private String resourceName ;
     @Column
     private String operationName ;
-    @Column
+    @Column(unique = true)
     private String operationCode;
     @Column
     private String sysFlag ;
