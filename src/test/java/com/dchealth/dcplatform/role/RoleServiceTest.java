@@ -11,8 +11,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @SpringBootTest
@@ -32,7 +36,7 @@ public class RoleServiceTest {
     private RoleRepo roleRepo;
 
     @Test
-    public void whenAddRole(){
+    public void whenAddRole() {
         Iterable<Resource> all = resourceRepo.findAll();
         Role role = new Role();
         role.setRoleName("test");
@@ -43,9 +47,57 @@ public class RoleServiceTest {
 
 
     @Test
-    public void whenDeleteRole(){
+    public void whenDeleteRole() {
         Iterable<Role> roles = roleRepo.findAll();
         roleService.deleteRoles(roles);
+    }
+
+    @Test
+    public void whenAddRoleSingle() {
+        Role role = new Role();
+        role.setRoleName("管理员");
+        role = roleService.saveRole(role);
+        Assert.assertNotNull(role.getId());
+
+    }
+
+    /**
+     * 测试修改角色
+     */
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void whenUpdateRole() {
+        Iterable<Role> all = roleRepo.findAll();
+        Iterator<Role> iterator = all.iterator();
+        while (iterator.hasNext()) {
+            Role next = iterator.next();
+            if ("管理员".equals(next.getRoleName())) {
+                Resource resource = new Resource();
+                resource.setOperationName("test:test");
+                resource.setSysFlag("1");
+                resource.setResourceName("测试资源");
+                resource.setOperationName("测试操作");
+                List<Resource> resourceses = new ArrayList<>();
+                resourceses.add(resource);
+                next.setResources(resourceses);
+                roleRepo.save(next);
+            }
+        }
+    }
+
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void whenDeleteRoleSingle() {
+        Iterable<Role> all = roleRepo.findAll();
+        Iterator<Role> iterator = all.iterator();
+        while (iterator.hasNext()) {
+            Role next = iterator.next();
+            if ("管理员".equals(next.getRoleName())) {
+                roleRepo.delete(next);
+            }
+        }
     }
 
 
