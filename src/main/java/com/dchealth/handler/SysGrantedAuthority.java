@@ -17,6 +17,9 @@ public class SysGrantedAuthority implements GrantedAuthority {
 
     private String username;
 
+    public SysGrantedAuthority(){
+
+    }
 
     public SysGrantedAuthority(String username) {
         this.username = username;

@@ -124,7 +124,7 @@ public class BaseController<T,ID,S extends BaseService> {
          service.removeById(id);
     }
 
-    @ApiOperation(value = "根据ID删除对象")
+    @ApiOperation(value = "删除具体的对象")
     @DeleteMapping
     @ApiImplicitParam(name = "t",value = "需要删除的对象")
     @PriOperation(operationName = "删除单一",operationCode = "delete:single")

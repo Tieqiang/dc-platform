@@ -27,7 +27,7 @@ public class Resource extends BaseEntity {
 
 
     @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.MERGE },mappedBy = "resources",fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.DETACH },mappedBy = "resources",fetch = FetchType.LAZY)
     private List<Role> roles;
 
 

@@ -22,7 +22,7 @@ public class SysUser extends BaseEntity implements UserDetails {
     private String password ;
 
     @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.DETACH},fetch = FetchType.EAGER)
     @JoinTable(name="role_vs_user",joinColumns = @JoinColumn(name="user_id",referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
     @Lazy(value = false)
@@ -48,9 +48,9 @@ public class SysUser extends BaseEntity implements UserDetails {
         this.password = password;
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends SysGrantedAuthority> getAuthorities() {
         SysGrantedAuthority sysGrantedAuthority = new SysGrantedAuthority(this.username);
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        List<SysGrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(sysGrantedAuthority);
         return grantedAuthorities;
     }

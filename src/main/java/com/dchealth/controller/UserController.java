@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @PriResource(resourceName = "用户管理",resourceCode = "user")
@@ -55,4 +56,16 @@ public class UserController {
     }
 
 
+    @ApiOperation("获取某一个角色的所有用户")
+    @GetMapping(path="user-by-role-id")
+    public List<SysUser> getUserByRoleId(@RequestParam("roleId") String roleId){
+        return sysUserService.getUserByRoleId(roleId);
+    }
+
+    @GetMapping(path="find-all")
+    @ApiOperation("获取所有用户")
+    @PriOperation(operationName = "获取所有用户",operationCode = "user:findAll")
+    public List<SysUser> findAllUser(){
+        return (List<SysUser>) sysUserService.findAll();
+    }
 }

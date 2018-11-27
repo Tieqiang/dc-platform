@@ -15,6 +15,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.TransactionScoped;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -98,6 +99,20 @@ public class RoleServiceTest {
                 roleRepo.delete(next);
             }
         }
+    }
+
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void whenMergeUsersByRole(){
+        /**
+         * 测试role保存的时候，因为没有users对象，是否能够会出现数据问题
+         */
+        List<Role> all = (List<Role>) roleRepo.findAll();
+        for(Role role:all){
+            roleRepo.save(role);
+        }
+
     }
 
 

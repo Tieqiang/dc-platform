@@ -39,7 +39,7 @@ public class SysUserTest {
     public void whenAddUser(){
         Iterable<Role> all = roleRepo.findAll();
         SysUser sysUser = new SysUser();
-        sysUser.setUsername("lili");
+        sysUser.setUsername("lili1");
         sysUser.setPassword(passwordEncoder.encode("lili"));
         sysUser.setRoles((List<Role>) all);
         sysUser= userRepo.save(sysUser);
