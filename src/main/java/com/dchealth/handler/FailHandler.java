@@ -29,6 +29,7 @@ public class FailHandler implements AuthenticationFailureHandler {
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         SimpleResponse simpleResponse = new SimpleResponse();
         response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
         simpleResponse.setCode("-1");
         simpleResponse.setDescription(exception.getMessage());
         response.getWriter().write(objectMapper.writeValueAsString(simpleResponse));

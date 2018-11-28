@@ -97,8 +97,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors() ;
-        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry expressionInterceptUrlRegistry = http.exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-                .authenticationEntryPoint(dcAuthenticationEntryPoint).and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
+        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry expressionInterceptUrlRegistry =
+                http.exceptionHandling()
+                        .accessDeniedHandler(accessDeniedHandler)
+                .authenticationEntryPoint(dcAuthenticationEntryPoint)
+                        .and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(validCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .formLogin()
@@ -111,7 +114,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         String exceptUrls = systemProperties.getExceptUrls();
         if(StringUtils.isNotEmpty(exceptUrls)){
             //添加排除验证的接口
-            expressionInterceptUrlRegistry.antMatchers(exceptUrls.split(",")).permitAll();
+            String[] split = exceptUrls.split(",");
+            expressionInterceptUrlRegistry.antMatchers(split).permitAll();
         }
 
 
