@@ -65,7 +65,6 @@ public class PriContextListener implements ApplicationListener<ContextRefreshedE
                 }
                 logger.info(resourceName);
 
-
                 if (StringUtils.isEmpty(resourceName)) {
                     try {
                         throw new Exception(aClass.getName() + "PriResource注解使用有误，请添加resourceName属性值");
@@ -78,10 +77,6 @@ public class PriContextListener implements ApplicationListener<ContextRefreshedE
                 Method[] methods = aClass.getMethods();
                 for (Method method : methods) {
                     Annotation[] annotations = method.getAnnotations();
-                    logger.info(method.getName() + ":");
-                    for (Annotation annotation : annotations) {
-                        logger.info(annotation.toString());
-                    }
                     PriOperation annotation = method.getAnnotation(PriOperation.class);
                     if (annotation != null) {
                         Resource resource = new Resource();
