@@ -4,7 +4,7 @@ import com.dchealth.config.properties.AuthentionProperties;
 import com.dchealth.config.properties.CorsProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "com.dchealth")
+@ConfigurationProperties(prefix = "com.dchealth.dchealth")
 public class SystemProperties {
 
     private boolean debug=false ;

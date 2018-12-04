@@ -15,7 +15,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.TransactionScoped;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

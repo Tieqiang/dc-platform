@@ -13,23 +13,23 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
 
 
-com.dchealth.authention.name = Authorization
-com.dchealth.authention.prefix = zhao 
-com.dchealth.authention.sceret = zhao
-com.dchealth.authention.expire = 1000000
-com.dchealth.authention.mockUser=user
+com.dchealth.dchealth.authention.name = Authorization
+com.dchealth.dchealth.authention.prefix = zhao
+com.dchealth.dchealth.authention.sceret = zhao
+com.dchealth.dchealth.authention.expire = 1000000
+com.dchealth.dchealth.authention.mockUser=user
 
 #配置跨域访问的信息开始
 #允许访问的来源域
-com.dchealth.cors.allowedOrigins=http://localhost:8080
+com.dchealth.dchealth.cors.allowedOrigins=http://localhost:8080
 #允许跨域访问的方法列表
-com.dchealth.cors.allowedMethods=GET,POST,PUT,DELETE
+com.dchealth.dchealth.cors.allowedMethods=GET,POST,PUT,DELETE
 #允许跨域访问的内容类型
-com.dchealth.cors.allowedHeaders =content-type,authorization
+com.dchealth.dchealth.cors.allowedHeaders =content-type,authorization
 
 #系统是否调试，如果调试时允许使用username=user和password=password的用户访问所有的接口
-com.dchealth.debug=true
+com.dchealth.dchealth.debug=true
 #排除不需要验证的路径
-com.dchealth.exceptUrls=/api/hello,api/hello1\
+com.dchealth.dchealth.exceptUrls=/api/hello,api/hello1\
   ,/swagger-ui.html,/**/*.js,/**/*.css,/**/*.png,/swagger-resources/configuration/ui,/v2/api-docs,/swagger-resources,/swagger-resources/configuration/security\
   ,/api/error,/api/wx
