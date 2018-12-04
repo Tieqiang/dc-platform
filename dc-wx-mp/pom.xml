@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dc-pri</artifactId>
-
+    <artifactId>dc-wx-mp</artifactId>
 
 
     <dependencies>
@@ -18,41 +17,6 @@
             <groupId>com.dchealth</groupId>
             <artifactId>dc-common</artifactId>
             <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
-        <!--接口文档生成开始-->
-        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
 
     </dependencies>
@@ -64,6 +28,7 @@
                 <configuration>
                     <!--如果没有这个配置，则Spring dev tools 没法实现热部署-->
                     <fork>true</fork>
+
                 </configuration>
                 <executions>
                     <execution>
@@ -82,7 +47,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>dc-platform</finalName>
+        <finalName>dc-wx-mp</finalName>
     </build>
 
 </project>

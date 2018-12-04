@@ -1,100 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.dchealth.dchealth</groupId>
-	<artifactId>dc-platform</artifactId>
-	<version>1.0.0-release</version>
-	<packaging>pom</packaging>
+    <groupId>com.dchealth</groupId>
+    <artifactId>dc-platform</artifactId>
+    <version>1.0.0-release</version>
+    <packaging>pom</packaging>
 
-	<name>dc-platform</name>
-	<description>Demo project for Spring Boot</description>
+    <name>dc-platform</name>
+    <description>Demo project for Spring Boot</description>
 
-	<modules>
-		<module>dc-common</module>
-		<module>dc-pri</module>
-	</modules>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<project.version>1.0.0-release</project.version>
-	</properties>
+    <modules>
+        <module>dc-common</module>
+        <module>dc-pri</module>
+        <module>dc-wx-mp</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <project.version>1.0.0-release</project.version>
+    </properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<!-- Import dependency management from Spring Boot -->
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>2.1.0.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-
-
-
-			<dependency>
-				<groupId>io.jsonwebtoken</groupId>
-				<artifactId>jjwt</artifactId>
-				<version>0.7.0</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-			<!--常见工具类-->
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>3.8.1</version>
-			</dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
 
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.7.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <!--常见工具类-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.8.1</version>
+            </dependency>
 
 
-			<!--接口文档生成开始-->
-			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>2.7.0</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger-ui</artifactId>
-				<version>2.7.0</version>
-			</dependency>
-			<!--接口文档生成结束-->
+            <!--接口文档生成开始-->
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.7.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.7.0</version>
+            </dependency>
+            <!--接口文档生成结束-->
 
 
-
-		</dependencies>
-	</dependencyManagement>
-
+        </dependencies>
+    </dependencyManagement>
 
 
+    <repositories>
 
-	<repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
 
-		<repository>
-			<id>spring-snapshots</id>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots><enabled>true</enabled></snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<url>https://repo.spring.io/milestone</url>
-		</repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
 
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<url>https://repo.spring.io/snapshot</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<url>https://repo.spring.io/milestone</url>
-		</pluginRepository>
-	</pluginRepositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

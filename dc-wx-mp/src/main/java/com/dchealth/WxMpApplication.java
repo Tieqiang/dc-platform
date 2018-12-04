@@ -11,12 +11,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @RestController
 @SpringBootApplication
 @EnableConfigurationProperties(value = SystemProperties.class)
-@ComponentScan(basePackages = "com.dchealth")
 @EnableSwagger2
-public class DcPlatformApplication {
+@ComponentScan("com.dchealth")
+public class WxMpApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DcPlatformApplication.class, args);
+		SpringApplication.run(WxMpApplication.class, args);
 	}
+
 
 }
