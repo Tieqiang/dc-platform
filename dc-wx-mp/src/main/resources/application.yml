@@ -12,7 +12,7 @@ wx:
         aesKey:
 server:
   port: 8083
-debug: true
+debug: false
 spring:
   jpa:
     show-sql: true
@@ -24,6 +24,11 @@ spring:
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+  devtools:
+    restart:
+      enabled: true
+      exclude: /static/**,/public/**,/resources/**
+      log-condition-evaluation-delta: true
 com:
   dchealth:
     dchealth:
@@ -34,7 +39,7 @@ com:
         expire: 1000000
         mockUser: user
       cors:
-        allowedOrigins: http://localhost:8080
+        allowedOrigins: http://localhost:8080,http://localhost:8081,http://localhost:8083,http://myweixin.tunnel.qydev.com,http://47.97.10.127:80
         allowedMethods: GET,POST,PUT,DELETE
         allowedHeaders: content-type,authorization
       except-urls: /api/hello,api/hello1\
