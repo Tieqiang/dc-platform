@@ -1,0 +1,42 @@
+logging:
+  level:
+    org.springframework.web: INFO
+    com.github.binarywang.demo.wx.mp: DEBUG
+    me.chanjar.weixin: DEBUG
+wx:
+  mp:
+    configs:
+      - appId: wx42b8bf514df86fef
+        secret: 4760dc564db91dd0b5b2d008a0fb2823
+        token: 10010
+        aesKey:
+server:
+  port: 8083
+debug: true
+spring:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+com:
+  dchealth:
+    dchealth:
+      authention:
+        name: Authorization
+        prefix: zhao
+        sceret: zhao
+        expire: 1000000
+        mockUser: user
+      cors:
+        allowedOrigins: http://localhost:8080
+        allowedMethods: GET,POST,PUT,DELETE
+        allowedHeaders: content-type,authorization
+      except-urls: /api/hello,api/hello1\
+                     ,/swagger-ui.html,/**/*.js,/**/*.css,/**/*.png,/swagger-resources/configuration/ui,/v2/api-docs,/swagger-resources,/swagger-resources/configuration/security\
+                     ,/api/error,/api/wx,/wx/portal/**
