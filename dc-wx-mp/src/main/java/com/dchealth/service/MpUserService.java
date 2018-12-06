@@ -10,12 +10,15 @@ import me.chanjar.weixin.mp.bean.result.WxMpUser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.net.URLDecoder;
+
 @Service
 public class MpUserService {
 
 
 
     public WxUserInfo getWxUserInfo(String url, String appId) throws WxErrorException {
+        url = URLDecoder.decode(url);
         if(StringUtils.isEmpty(url)||!url.contains("code")){
             return null ;
         }else{
