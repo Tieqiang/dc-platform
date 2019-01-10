@@ -87,12 +87,17 @@
                 </executions>
                 <configuration>
                     <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>ws.wsdl</generatePackage>
-                    <schemas>
-                        <schema>
-                            <url>http://192.168.40.142:8888/SingleLoginSrv.asmx?wsdl</url>
-                        </schema>
-                    </schemas>
+                    <generatePackage>com.dchealth.healthcard.soapclient.generate</generatePackage>
+                    <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
+                    <schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
+                    <!--<schemas>-->
+                        <!--<schema>-->
+                            <!--<url>http://localhost:5731/WebService1.asmx?wsdl</url>-->
+                        <!--</schema>-->
+                    <!--</schemas>-->
+                    <schemaIncludes>
+                        <include>*.wsdl</include>
+                    </schemaIncludes>
                 </configuration>
             </plugin>
         </plugins>

@@ -3,7 +3,9 @@ logging:
     org.springframework.web: INFO
     com.github.binarywang.demo.wx.mp: DEBUG
     me.chanjar.weixin: DEBUG
-
+soap:
+  configs:
+    default-uri: http://localhost:5731/WebService1.asmx
 server:
   port: 8083
 debug: false
@@ -13,11 +15,14 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialet: org.hibernate.dialect.MySQL5Dialect
   datasource:
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+    url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
   devtools:
     restart:
       enabled: true
@@ -37,5 +42,5 @@ com:
         allowedMethods: GET,POST,PUT,DELETE
         allowedHeaders: content-type,authorization
       except-urls: /api/hello,api/hello1\
-                     ,/swagger-ui.html,/**/*.js,/**/*.css,/**/*.png,/swagger-resources/configuration/ui,/v2/api-docs,/swagger-resources,/swagger-resources/configuration/security\
-                     ,/api/error,/api/wx,/wx/portal/**
+        ,/swagger-ui.html,/**/*.js,/**/*.css,/**/*.png,/swagger-resources/configuration/ui,/v2/api-docs,/swagger-resources,/swagger-resources/configuration/security\
+        ,/api/error,/api/wx,/wx/portal/**
