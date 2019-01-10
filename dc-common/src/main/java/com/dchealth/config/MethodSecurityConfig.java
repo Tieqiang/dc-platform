@@ -1,6 +1,6 @@
 package com.dchealth.config;
 
-import com.dchealth.handler.AuthPremissionEvaluator;
+import com.dchealth.handler.AuthPermissionEvaluator;
 import com.dchealth.handler.custom.CustomMethodSecurityExpressionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration{
 
     @Autowired
-    private AuthPremissionEvaluator premissionEvaluator ;
+    private AuthPermissionEvaluator premissionEvaluator ;
 
     /**
      * 如果要扩展表达式，可以使用这样的方式。

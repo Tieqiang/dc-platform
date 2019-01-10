@@ -15,6 +15,7 @@
         <module>dc-common</module>
         <module>dc-pri</module>
         <module>dc-wx-mp</module>
+        <module>healthcard-geermu</module>
     </modules>
     <properties>
         <weixin-java-mp.version>3.2.0</weixin-java-mp.version>
