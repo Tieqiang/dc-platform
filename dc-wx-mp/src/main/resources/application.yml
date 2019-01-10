@@ -19,6 +19,9 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialet: org.hibernate.dialect.MySQL5Dialect
   datasource:
     username: root
     password: 123456
