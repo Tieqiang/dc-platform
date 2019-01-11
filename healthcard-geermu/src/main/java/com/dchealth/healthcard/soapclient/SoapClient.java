@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
-
+@Component
 public class SoapClient extends WebServiceGatewaySupport {
     private final WebServiceTemplate webServiceTemplate;
 
@@ -19,7 +19,11 @@ public class SoapClient extends WebServiceGatewaySupport {
 
     public String HelloWorld() {
         HelloWorld request = new HelloWorld();
-        HelloWorldResponse response = (HelloWorldResponse)getWebServiceTemplate().marshalSendAndReceive( request,new SoapActionCallback("http://tempuri.org/HelloWorld"));
+        HelloWorldResponse response = (HelloWorldResponse)this.webServiceTemplate.marshalSendAndReceive( request,new SoapActionCallback("http://tempuri.org/HelloWorld"));
         return response.getHelloWorldResult().toString();
+    }
+
+    private String RHCMessageServer(String action,String message) {
+        return "";
     }
 }

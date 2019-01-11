@@ -23,10 +23,10 @@ public class HealthCardApplication {
     }
 
     @Bean
-    CommandLineRunner lookup(SoapClient soapConnector) {
+    CommandLineRunner lookup(SoapClient soapClient) {
         return args -> {
 
-            System.out.println("hello : " + soapConnector.HelloWorld());
+//            System.out.println("hello : " + soapClient.HelloWorld());
 
         };
     }
