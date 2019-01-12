@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<wsdl:definitions name="ElecHealthCardWebSeviceImplService" targetNamespace="http://webservice.ehc.cdxt.com/"
+                  xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://webservice.ehc.cdxt.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+        <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+                    targetNamespace="http://webservice.ehc.cdxt.com/" xmlns:tns="http://webservice.ehc.cdxt.com/"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:element name="RHCMessageServer" type="tns:RHCMessageServer"></xsd:element>
+            <xsd:complexType name="RHCMessageServer">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"></xsd:element>
+                    <xsd:element minOccurs="0" name="arg1" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="RHCMessageServerResponse" type="tns:RHCMessageServerResponse"></xsd:element>
+            <xsd:complexType name="RHCMessageServerResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="RHCMessageServerResponse">
+        <wsdl:part element="tns:RHCMessageServerResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RHCMessageServer">
+        <wsdl:part element="tns:RHCMessageServer" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ElecHealthCardWebSevice">
+        <wsdl:operation name="RHCMessageServer">
+            <wsdl:input message="tns:RHCMessageServer" name="RHCMessageServer">
+            </wsdl:input>
+            <wsdl:output message="tns:RHCMessageServerResponse" name="RHCMessageServerResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ElecHealthCardWebSeviceImplServiceSoapBinding" type="tns:ElecHealthCardWebSevice">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <wsdl:operation name="RHCMessageServer">
+            <soap:operation soapAction="" style="document"></soap:operation>
+            <wsdl:input name="RHCMessageServer">
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="RHCMessageServerResponse">
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ElecHealthCardWebSeviceImplService">
+        <wsdl:port binding="tns:ElecHealthCardWebSeviceImplServiceSoapBinding" name="ElecHealthCardWebSeviceImplPort">
+            <soap:address
+                    location="http://130.130.3.111:8080/healthCard/services/elecHealthCardWebSevice"></soap:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,10 +1,9 @@
 package com.dchealth.healthcard.soapclient;
 
-import com.dchealth.healthcard.soapclient.generate.HelloWorld;
-import com.dchealth.healthcard.soapclient.generate.HelloWorldResponse;
+import com.dchealth.healthcard.soapclient.generate.RHCMessageServer;
+import com.dchealth.healthcard.soapclient.generate.RHCMessageServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webservices.client.WebServiceTemplateBuilder;
-import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
@@ -17,9 +16,14 @@ public class SoapClient extends WebServiceGatewaySupport {
         this.webServiceTemplate = webServiceTemplateBuilder.build();
     }
 
-    public String HelloWorld() {
-        HelloWorld request = new HelloWorld();
-        HelloWorldResponse response = (HelloWorldResponse)getWebServiceTemplate().marshalSendAndReceive( request,new SoapActionCallback("http://tempuri.org/HelloWorld"));
-        return response.getHelloWorldResult().toString();
+    public RHCMessageServerResponse RHCMessageServer(String action,String message){
+        RHCMessageServer rhcMessageServer = new RHCMessageServer();
+        rhcMessageServer.setArg0(action);
+        rhcMessageServer.setArg1(message);
+        String defaultUri = this.webServiceTemplate.getDefaultUri();
+        System.out.println(defaultUri);
+        RHCMessageServerResponse response = (RHCMessageServerResponse) getWebServiceTemplate().marshalSendAndReceive(rhcMessageServer,new SoapActionCallback(""));
+        return response;
     }
+
 }

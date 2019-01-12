@@ -11,8 +11,10 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 @Configuration
 @EnableConfigurationProperties(SoapProperties.class)
 public class SoapConfig {
+
     @Autowired
     private SoapProperties properties;
+
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
