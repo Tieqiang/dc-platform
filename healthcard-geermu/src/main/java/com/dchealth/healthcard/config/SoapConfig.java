@@ -25,11 +25,12 @@ public class SoapConfig {
     }
 
     @Bean
-    public SoapClient soapClient(Jaxb2Marshaller marshaller, WebServiceTemplateBuilder builder) {
-        SoapClient client = new SoapClient(builder);
-        client.setDefaultUri(properties.getDefaultUri());
-        client.setMarshaller(marshaller);
-        client.setUnmarshaller(marshaller);
-        return client;
+    public WebServiceTemplateBuilder webServiceTemplateBuilder(Jaxb2Marshaller marshaller) {
+
+        WebServiceTemplateBuilder builder = new WebServiceTemplateBuilder();
+        builder.setDefaultUri(properties.getDefaultUri());
+        builder.setMarshaller(marshaller);
+        builder.setUnmarshaller(marshaller);
+        return builder;
     }
 }
