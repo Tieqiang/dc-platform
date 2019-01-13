@@ -22,7 +22,8 @@ public class SoapClient extends WebServiceGatewaySupport {
         rhcMessageServer.setArg1(message);
         String defaultUri = this.webServiceTemplate.getDefaultUri();
         System.out.println(defaultUri);
-        RHCMessageServerResponse response = (RHCMessageServerResponse) getWebServiceTemplate().marshalSendAndReceive(rhcMessageServer,new SoapActionCallback(""));
+        Object o = getWebServiceTemplate().marshalSendAndReceive(rhcMessageServer, new SoapActionCallback(""));
+        RHCMessageServerResponse response = (RHCMessageServerResponse) o;
         return response;
     }
 
