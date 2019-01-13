@@ -1,6 +1,8 @@
 package com.dchealth.healthcard.config;
 
 import com.dchealth.healthcard.soapclient.SoapClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.webservices.client.WebServiceTemplateBuilder;
@@ -32,6 +34,11 @@ public class SoapConfig {
         builder.setMarshaller(marshaller);
         builder.setUnmarshaller(marshaller);
         return builder;
+    }
+
+    @Bean(name = "xmlMapper")
+    public ObjectMapper xmlObjectMapper(){
+        return new XmlMapper();
     }
 
     @Bean
