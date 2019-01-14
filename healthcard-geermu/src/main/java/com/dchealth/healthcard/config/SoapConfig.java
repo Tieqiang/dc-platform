@@ -22,7 +22,8 @@ public class SoapConfig {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
         // this is the package name specified in the <generatePackage> specified in
         // pom.xml
-        marshaller.setContextPath("com.dchealth.healthcard.soapclient.generate");
+        marshaller.setPackagesToScan("com.dchealth.healthcard.soapclient.generate","com.dchealth.healthcard.vo.jaxb");
+//        marshaller.setContextPath();
         return marshaller;
     }
 

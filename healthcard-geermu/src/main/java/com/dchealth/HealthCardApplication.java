@@ -2,24 +2,18 @@ package com.dchealth;
 
 import com.dchealth.config.SystemProperties;
 import com.dchealth.healthcard.service.RHCMessageServerService;
-import com.dchealth.healthcard.soapclient.SoapClient;
-import com.dchealth.healthcard.soapclient.generate.RHCMessageServer;
-import com.dchealth.healthcard.soapclient.generate.RHCMessageServerResponse;
 import com.dchealth.healthcard.vo.*;
-import io.swagger.annotations.ApiOperation;
+import com.dchealth.healthcard.vo.jaxb.ActionObject;
+import com.dchealth.healthcard.vo.jaxb.BaseResponse;
+import com.dchealth.healthcard.vo.jaxb.CardRegistMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 @RestController
 @SpringBootApplication
@@ -36,10 +30,11 @@ public class HealthCardApplication {
     private RHCMessageServerService rhcMessageServerService;
 
     @GetMapping("/api/ws")
-    public PersonInfo helloSoap() throws IOException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public BaseResponse helloSoap() throws Exception {
 
         BaseResponse responseInterface = rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), new CardRegistMessage());
-        return (PersonInfo) responseInterface.getTObject(new PersonInfo());
+//        return (PersonInfo) responseInterface.getTObject(new PersonInfo());
+        return responseInterface;
     }
 
 }

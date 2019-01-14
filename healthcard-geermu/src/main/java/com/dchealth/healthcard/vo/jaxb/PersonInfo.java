@@ -1,6 +1,7 @@
-package com.dchealth.healthcard.vo;
+package com.dchealth.healthcard.vo.jaxb;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 1	返回值	result	String	10	成功与否 success成功 failure失败
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
  15	电子居民健康卡账户状态	ehc_card_status	String	1	参照4.3 RHC_VCARD_ZT
 
  */
-@JacksonXmlRootElement(localName = "personinfo")
+@XmlRootElement(name="personinfo")
 public class PersonInfo {
 
     private String name ;

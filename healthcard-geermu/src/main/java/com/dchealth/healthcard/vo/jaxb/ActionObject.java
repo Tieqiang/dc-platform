@@ -1,12 +1,11 @@
-package com.dchealth.healthcard.vo;
+package com.dchealth.healthcard.vo.jaxb;
 
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import org.springframework.beans.factory.annotation.Value;
+import com.dchealth.healthcard.vo.ActionInterface;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.io.ClassPathResource;
 
-import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +15,7 @@ import java.util.UUID;
 /**
  * 访问请求的Action类
  */
-@JacksonXmlRootElement(localName = "request")
+@XmlRootElement(name = "request")
 public class ActionObject implements ActionInterface {
 
     //消息标识符号

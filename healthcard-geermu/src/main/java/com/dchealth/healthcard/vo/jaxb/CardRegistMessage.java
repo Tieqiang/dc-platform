@@ -1,8 +1,8 @@
-package com.dchealth.healthcard.vo;
+package com.dchealth.healthcard.vo.jaxb;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import com.dchealth.healthcard.vo.MessageInterface;
 
-import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 居民姓名	name	String	32	Y
@@ -20,8 +20,8 @@ import java.io.Serializable;
  手机号码	cellphone	String	20
  工作单位	unit	String	100
  */
-@JacksonXmlRootElement(localName = "request")
-public class CardRegistMessage implements MessageInterface{
+@XmlRootElement(name = "request")
+public class CardRegistMessage implements MessageInterface {
 
     private String name ;
     private String telephone ;

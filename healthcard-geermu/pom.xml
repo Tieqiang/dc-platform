@@ -94,14 +94,15 @@
                     <generatePackage>com.dchealth.healthcard.soapclient.generate</generatePackage>
                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                     <schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
-                    <!--<schemas>-->
-                        <!--<schema>-->
-                            <!--<url>http://localhost:5731/WebService1.asmx?wsdl</url>-->
-                        <!--</schema>-->
-                    <!--</schemas>-->
-                    <schemaIncludes>
-                        <include>*.wsdl</include>
-                    </schemaIncludes>
+                    <schemas>
+                        <schema>
+                            <url>http://sf201.frpzj.kskxs.com:8081/healthCard/services/elecHealthCardWebSevice?wsdl</url>
+                            <!--<url>http://192.168.40.142:8888/SingleLoginSrv.asmx?wsdl</url>-->
+                        </schema>
+                    </schemas>
+                    <!--<schemaIncludes>-->
+                        <!--<include>*.wsdl</include>-->
+                    <!--</schemaIncludes>-->
                 </configuration>
             </plugin>
         </plugins>
