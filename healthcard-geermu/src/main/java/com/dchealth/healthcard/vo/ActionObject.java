@@ -2,11 +2,15 @@ package com.dchealth.healthcard.vo;
 
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
+import org.springframework.core.io.ClassPathResource;
 
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.UUID;
 
 /**
@@ -35,7 +39,6 @@ public class ActionObject implements ActionInterface {
 
     //注册在青海省卡管中心平台的APP，APP调用时此项必须输入，与5不能同时为空，此时orgId为空。
     private String appCode ;
-
     private String userName;
     private String userPwd ;
 
@@ -48,15 +51,22 @@ public class ActionObject implements ActionInterface {
     }
 
     public ActionObject(String bussinessCode) {
+
+        YamlPropertiesFactoryBean ymal = new YamlPropertiesFactoryBean();
+        ymal.setResources(new ClassPathResource("application.yml"));
+        Properties properties = ymal.getObject();
+        String orgId =properties.getProperty("soap.configs.orgId");
+        String userName = properties.getProperty("soap.configs.userName");
+        String password = properties.getProperty("soap.configs.password");
+        this.orgId = orgId ;
+        this.userName = userName;
+        this.userPwd = password;
         String uuid = UUID.randomUUID().toString();
         this.msgGuid =uuid.replace("-","");
         this.msgType = "1";
         DateFormat df = new SimpleDateFormat("yyyy-MM-DDHH:mm:ss");
         Date date = new Date();
         this.msgCreateTime=df.format(date);
-        this.userName="userName";
-        this.userPwd = "userPwd";
-
         this.bussinessCode = bussinessCode;
     }
 
