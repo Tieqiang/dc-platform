@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 @JacksonXmlRootElement(localName = "response")
 public class BaseResponse<T> implements ResponseInterface {
 
-
+    private String resultCode;
     private String result;
     private String desc;
 
@@ -20,6 +20,14 @@ public class BaseResponse<T> implements ResponseInterface {
 
     public BaseResponse(T t) {
         this.t_objectName = t;
+    }
+
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(String resultCode) {
+        this.resultCode = resultCode;
     }
 
     public String getResult() {

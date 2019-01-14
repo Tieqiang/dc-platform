@@ -8,6 +8,8 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
+import javax.xml.bind.JAXBElement;
+
 public class SoapClient extends WebServiceGatewaySupport {
     private final WebServiceTemplate webServiceTemplate;
 
@@ -16,15 +18,14 @@ public class SoapClient extends WebServiceGatewaySupport {
         this.webServiceTemplate = webServiceTemplateBuilder.build();
     }
 
-    public RHCMessageServerResponse RHCMessageServer(String action,String message){
+    public RHCMessageServerResponse RHCMessageServer(String action, String message) {
         RHCMessageServer rhcMessageServer = new RHCMessageServer();
         rhcMessageServer.setArg0(action);
         rhcMessageServer.setArg1(message);
         String defaultUri = this.webServiceTemplate.getDefaultUri();
         System.out.println(defaultUri);
-        Object o = getWebServiceTemplate().marshalSendAndReceive(rhcMessageServer, new SoapActionCallback(""));
-        RHCMessageServerResponse response = (RHCMessageServerResponse) o;
-        return response;
+        JAXBElement<RHCMessageServerResponse> res = (JAXBElement<RHCMessageServerResponse>)getWebServiceTemplate().marshalSendAndReceive(rhcMessageServer);
+        return res.getValue();
     }
 
 }

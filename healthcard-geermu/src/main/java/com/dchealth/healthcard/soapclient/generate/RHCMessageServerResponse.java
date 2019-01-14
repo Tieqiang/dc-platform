@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.*;
 @XmlType(name = "RHCMessageServerResponse", propOrder = {
     "_return"
 })
-@XmlRootElement
+@XmlRootElement(name="RHCMessageServerResponse")
 public class RHCMessageServerResponse {
 
     @XmlElement(name = "return")
