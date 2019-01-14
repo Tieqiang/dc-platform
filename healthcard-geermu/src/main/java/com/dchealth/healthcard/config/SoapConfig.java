@@ -1,8 +1,6 @@
 package com.dchealth.healthcard.config;
 
 import com.dchealth.healthcard.soapclient.SoapClient;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.webservices.client.WebServiceTemplateBuilder;
@@ -23,6 +21,7 @@ public class SoapConfig {
         // this is the package name specified in the <generatePackage> specified in
         // pom.xml
         marshaller.setPackagesToScan("com.dchealth.healthcard.soapclient.generate","com.dchealth.healthcard.vo.jaxb");
+
 //        marshaller.setContextPath();
         return marshaller;
     }
