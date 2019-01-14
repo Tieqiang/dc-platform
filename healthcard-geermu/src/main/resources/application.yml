@@ -3,7 +3,8 @@ logging:
     org.springframework.web: INFO
     com.github.binarywang.demo.wx.mp: DEBUG
     me.chanjar.weixin: DEBUG
-    org.springframework.ws.client.core: DEBUG
+    org.springframework.ws.client.core: debug
+    org.apache.commons.logging: debug
 soap:
   configs:
     default-uri: http://sf201.frpzj.kskxs.com:8081/healthCard/services/elecHealthCardWebSevice?wsdl
@@ -48,4 +49,4 @@ com:
         allowedHeaders: content-type,authorization
       except-urls: /api/hello,api/hello1\
         ,/swagger-ui.html,/**/*.js,/**/*.css,/**/*.png,/swagger-resources/configuration/ui,/v2/api-docs,/swagger-resources,/swagger-resources/configuration/security\
-        ,/api/error,/api/wx,/wx/portal/**,/api/ws
+        ,/api/error,/api/wx,/wx/portal/**,/api/ws,/favicon.ico

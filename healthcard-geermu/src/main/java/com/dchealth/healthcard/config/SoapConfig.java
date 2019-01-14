@@ -37,10 +37,10 @@ public class SoapConfig {
         return builder;
     }
 
-    @Bean(name = "xmlMapper")
-    public ObjectMapper xmlObjectMapper(){
-        return new XmlMapper();
-    }
+//    @Bean(name = "xmlMapper")
+//    public ObjectMapper xmlObjectMapper(){
+//        return new XmlMapper();
+//    }
 
     @Bean
     public SoapClient soapClient(Jaxb2Marshaller marshaller, WebServiceTemplateBuilder builder) {
