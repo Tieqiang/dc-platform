@@ -3,6 +3,7 @@ package com.dchealth.healthcard.service;
 import com.dchealth.healthcard.soapclient.SoapClient;
 import com.dchealth.healthcard.soapclient.generate.RHCMessageServerResponse;
 import com.dchealth.healthcard.vo.ActionInterface;
+import com.dchealth.healthcard.vo.ResponseInterface;
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
 import com.dchealth.healthcard.vo.MessageInterface;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,7 +33,7 @@ public class RHCMessageServerService {
     @Autowired
     private SoapClient soapClient ;
 
-    public BaseResponse RHCMessageServer(ActionInterface action, MessageInterface message) throws Exception {
+    public ResponseInterface RHCMessageServer(ActionInterface action, MessageInterface message) throws Exception {
 
         StringWriter actionWriter = new StringWriter();
         XMLResult actionResult = new XMLResult(actionWriter);
@@ -50,7 +51,7 @@ public class RHCMessageServerService {
         RHCMessageServerResponse response = soapClient.RHCMessageServer(actionString, messageString);
         String aReturn = response.getReturn();
         logger.info("请求返回消息："+aReturn);
-        return (BaseResponse) marshaller.unmarshal(new StreamSource( new StringReader(aReturn)));
+        return (ResponseInterface) marshaller.unmarshal(new StreamSource( new StringReader(aReturn)));
 
     }
 

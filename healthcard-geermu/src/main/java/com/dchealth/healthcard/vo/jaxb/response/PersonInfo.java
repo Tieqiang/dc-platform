@@ -3,7 +3,7 @@ package com.dchealth.healthcard.vo.jaxb.response;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "personinfo")
-public class CardBindingForFamillyResponse {
+public class PersonInfo {
     private String name;//居民姓名|
     private String main_index;//居民主索引号|即健康档案号
     private String telephone;//联系电话|
@@ -16,7 +16,14 @@ public class CardBindingForFamillyResponse {
     private String address;//户籍地址|
     private String ehc_card_status;//电子居民健康卡账户状态|参照4.3 RHC_VCARD_ZT
 
-    public CardBindingForFamillyResponse() {
+    private String relation;//家庭成员关系代码|参照4.3 GB_T_4761_1984
+
+    private String ecardId;//电子健康卡Id|
+
+
+
+
+    public PersonInfo() {
     }
 
     public String getName() {
@@ -105,5 +112,21 @@ public class CardBindingForFamillyResponse {
 
     public void setEhc_card_status(String ehc_card_status) {
         this.ehc_card_status = ehc_card_status;
+    }
+
+    public String getRelation() {
+        return relation;
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation;
+    }
+
+    public String getEcardId() {
+        return ecardId;
+    }
+
+    public void setEcardId(String ecardId) {
+        this.ecardId = ecardId;
     }
 }

@@ -4,7 +4,7 @@ import com.dchealth.healthcard.vo.*;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
 import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
-import com.dchealth.healthcard.vo.jaxb.PersonInfo;
+import com.dchealth.healthcard.vo.jaxb.response.PersonInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
@@ -101,8 +101,6 @@ public class ActionObjectTest {
 
         Object res1 = unmarshaller.unmarshal(new StringReader(xml));
         System.out.println(res1);
-//        PersonInfo tObject = (PersonInfo) baseResponse1.getTObject(new PersonInfo());
-//        System.out.println(tObject.getAddress());
 
     }
 
