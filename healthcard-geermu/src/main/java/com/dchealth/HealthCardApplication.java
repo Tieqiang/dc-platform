@@ -5,13 +5,13 @@ import com.dchealth.healthcard.service.RHCMessageServerService;
 import com.dchealth.healthcard.vo.*;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
-import com.dchealth.healthcard.vo.jaxb.CardRegistMessage;
+import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -30,7 +30,7 @@ public class HealthCardApplication {
     @Autowired
     private RHCMessageServerService rhcMessageServerService;
 
-    @GetMapping(path="/api/ws",produces = "application/json")
+    @PostMapping(path="/api/ws",produces = "application/json")
     @ResponseBody
     public BaseResponse helloSoap() throws Exception {
 

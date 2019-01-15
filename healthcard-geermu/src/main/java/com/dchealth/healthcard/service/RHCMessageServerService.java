@@ -52,7 +52,6 @@ public class RHCMessageServerService {
         logger.info("请求返回消息："+aReturn);
         return (BaseResponse) marshaller.unmarshal(new StreamSource( new StringReader(aReturn)));
 
-
     }
 
 

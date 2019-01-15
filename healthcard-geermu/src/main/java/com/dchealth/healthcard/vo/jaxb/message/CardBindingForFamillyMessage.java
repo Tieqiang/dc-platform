@@ -1,44 +1,53 @@
-package com.dchealth.healthcard.vo.jaxb;
+package com.dchealth.healthcard.vo.jaxb.message;
+
 
 import com.dchealth.healthcard.vo.MessageInterface;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * 居民姓名	name	String	32	Y
- 联系电话	telephone	String	11	Y
- 证件号码	id_number	String	18	Y
- 证件类型	id_type	String	2	Y	参照4.3 CV02_01_101
- 居民身份证号	id_card	String	18	Y
- 民族	nation	String	2	Y	参照4.3 GB_T_3304_1991
- 性别	sex	String	1	Y	参照4.3 GB_T_2261_1_2003
- 出生日期	birthday	String	8	Y	格式yyyyMMdd  如：19900917
- 居民身份证件照片正面	photo_front	String		Y	图片格式为png，大小在200kb以内，需要转base64字符串
- 居民身份证件照片背面	photo_reverse	String		Y	图片格式为png，大小在200kb以内，需要转base64字符串
- 居民本人正面头像	photo_face	String		Y	图片格式为png，大小在200kb以内，需要转base64字符串
- 户籍地址	address	String	256	Y
- 手机号码	cellphone	String	20
- 工作单位	unit	String	100
- */
 @XmlRootElement(name = "request")
-public class CardRegistMessage implements MessageInterface {
+public class CardBindingForFamillyMessage implements MessageInterface {
+    private String self_id_type;//本人证件类型|
+    private String self_id_number;//本人证件号码|
+    private String relation;//家庭成员关系代码|参照4.3 GB_T_4761_1984
+    private String name;//家庭成员姓名|
+    private String telephone;//家庭成员联系电话|
+    private String id_number;//家庭成员证件号码|
+    private String id_type;//家庭成员证件类型|参照4.3 CV02_01_101
+    private String id_card;//家庭成员居民身份证号|
+    private String nation;//家庭成员民族|参照4.3 GB_T_3304_1991
+    private String sex;//家庭成员性别|参照4.3 GB_T_2261_1_2003
+    private String birthday;//家庭成员出生日期|格式yyyyMMdd  如：19900917
+    private String photo_front;//家庭成员身份证件照片正面|图片格式为png，大小在200kb以内，需要转base64字符串
+    private String photo_reverse;//家庭成员身份证件照片背面|图片格式为png，大小在200kb以内，需要转base64字符串
+    private String photo_face;//家庭成员本人正面头像|图片格式为png，大小在200kb以内，需要转base64字符串
+    private String address;//家庭成员户籍地址|
 
-    private String name ;
-    private String telephone ;
-    private String id_number ;
-    private String id_type ;
-    private String id_card ;
-    private String nation ;
-    private String sex ;
-    private String birthday ;
-    private String photo_front;
-    private String photo_reverse ;
-    private String photo_face ;
-    private String address ;
-    private String cellphone ;
-    private String unit ;
+    public CardBindingForFamillyMessage() {
+    }
 
-    public CardRegistMessage() {
+    public String getSelf_id_type() {
+        return self_id_type;
+    }
+
+    public void setSelf_id_type(String self_id_type) {
+        this.self_id_type = self_id_type;
+    }
+
+    public String getSelf_id_number() {
+        return self_id_number;
+    }
+
+    public void setSelf_id_number(String self_id_number) {
+        this.self_id_number = self_id_number;
+    }
+
+    public String getRelation() {
+        return relation;
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation;
     }
 
     public String getName() {
@@ -135,21 +144,5 @@ public class CardRegistMessage implements MessageInterface {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getCellphone() {
-        return cellphone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
     }
 }
