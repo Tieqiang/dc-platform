@@ -1,6 +1,7 @@
 package com.dchealth;
 
 import com.dchealth.healthcard.soapclient.ReqTest;
+import com.dchealth.healthcard.vo.MessageInterface;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +29,10 @@ public class UtilsTest {
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(request, System.out);
+    }
+
+    public void generateMessage(MessageInterface message) {
+
     }
 
 }

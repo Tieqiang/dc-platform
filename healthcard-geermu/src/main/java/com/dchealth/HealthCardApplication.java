@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,11 +33,18 @@ public class HealthCardApplication {
 
     @PostMapping(path="/api/ws",produces = "application/json")
     @ResponseBody
-    public BaseResponse helloSoap() throws Exception {
+    public Object helloSoap() throws Exception {
 
-        BaseResponse responseInterface = rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), new CardRegistMessage());
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), new CardRegistMessage());
 //        return (PersonInfo) responseInterface.getTObject(new PersonInfo());
-        return responseInterface;
+//        return responseInterface;
+    }
+
+    @GetMapping(path="/api/message",produces = "application/json")
+    @ResponseBody
+    public MessageInterface message() throws Exception {
+
+        return new CardRegistMessage();
     }
 
 }

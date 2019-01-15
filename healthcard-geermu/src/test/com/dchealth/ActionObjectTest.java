@@ -3,11 +3,12 @@ package com.dchealth;
 import com.dchealth.healthcard.vo.*;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
-import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
 import com.dchealth.healthcard.vo.jaxb.PersonInfo;
+import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBContext;
@@ -26,7 +27,11 @@ public class ActionObjectTest {
 
     private ObjectMapper xmlMapper;
 
-
+    @Before
+    public void before() {
+        this.objectMapper = new ObjectMapper();
+//        this.xmlMapper = new XmlMapper();
+    }
 
     @Test
     public void whenCreateActionObject() throws JsonProcessingException {

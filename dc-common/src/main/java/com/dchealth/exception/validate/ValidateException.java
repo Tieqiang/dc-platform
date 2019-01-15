@@ -1,11 +1,11 @@
 package com.dchealth.exception.validate;
 
-import com.dchealth.exception.DcException;
+import com.dchealth.exception.BHException;
 
 /**
  * 校验异常
  */
-public class ValidateException extends DcException {
+public class ValidateException extends BHException {
     public ValidateException() {
         this("参数校验异常！");
     }

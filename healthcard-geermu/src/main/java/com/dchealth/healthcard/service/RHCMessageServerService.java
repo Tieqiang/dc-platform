@@ -32,7 +32,7 @@ public class RHCMessageServerService {
     @Autowired
     private SoapClient soapClient ;
 
-    public BaseResponse RHCMessageServer(ActionInterface action, MessageInterface message) throws Exception {
+    public Object RHCMessageServer(ActionInterface action, MessageInterface message) {
 
         StringWriter actionWriter = new StringWriter();
         XMLResult actionResult = new XMLResult(actionWriter);
@@ -50,7 +50,7 @@ public class RHCMessageServerService {
         RHCMessageServerResponse response = soapClient.RHCMessageServer(actionString, messageString);
         String aReturn = response.getReturn();
         logger.info("请求返回消息："+aReturn);
-        return (BaseResponse) marshaller.unmarshal(new StreamSource( new StringReader(aReturn)));
+        return marshaller.unmarshal(new StreamSource( new StringReader(aReturn)));
 
     }
 
