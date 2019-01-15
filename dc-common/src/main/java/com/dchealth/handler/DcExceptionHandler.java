@@ -1,5 +1,6 @@
 package com.dchealth.handler;
 
+import com.dchealth.exception.BHException;
 import com.dchealth.exception.DcException;
 import com.dchealth.vo.SimpleResponse;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -22,6 +23,7 @@ public class DcExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value=Exception.class)
     public SimpleResponse exceptionHandle(Exception ex) {
+        logger.error("系统或平台异常！",ex);
         SimpleResponse simpleResponse = this.sendResponse("-9", ex, "");
         return simpleResponse;
     }
@@ -30,6 +32,16 @@ public class DcExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value=DcException.class)
     public SimpleResponse exceptionPlatException(DcException ex){
+        logger.error("平台异常",ex);
+        SimpleResponse simpleResponse = this.sendResponse("-1", ex, "");
+        return simpleResponse;
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(value=BHException.class)
+    public SimpleResponse businessHandlerException(BHException ex){
+        logger.error("业务处理异常！",ex);
         SimpleResponse simpleResponse = this.sendResponse("-1", ex, "");
         return simpleResponse;
     }
@@ -43,6 +55,7 @@ public class DcExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value=AccessDeniedException.class)
     public SimpleResponse accessDeniedException(AccessDeniedException ex){
+        logger.error("权限异常！",ex);
         return this.sendResponse("403",ex,"没有权限访问接口，访问被拒绝");
     }
 
@@ -55,6 +68,7 @@ public class DcExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value=ExpiredJwtException.class)
     public SimpleResponse expiredJwtException(ExpiredJwtException ex){
+        logger.error("令牌过期异常！",ex);
         return this.sendResponse("403",ex,"令牌已过期");
     }
 
@@ -67,7 +81,6 @@ public class DcExceptionHandler {
         }else{
             response.setDescription( this.getExceptionMessage(ex));
         }
-
         return response;
     }
 
