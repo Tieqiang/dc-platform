@@ -6,15 +6,13 @@ import com.dchealth.healthcard.vo.*;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
 import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
@@ -38,6 +36,16 @@ public class HealthCardApplication {
         ResponseInterface responseInterface = rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), new CardRegistMessage());
 //        return (PersonInfo) responseInterface.getTObject(new PersonInfo());
         return responseInterface;
+    }
+
+    @GetMapping(path="/api/message/{message}",produces = "application/json")
+    @ResponseBody
+    public MessageInterface message(@PathVariable String message) throws Exception {
+        if ("card".equalsIgnoreCase(message)) {
+            return new CardRegistMessage();
+        } else {
+            return new CardRegistMessage();
+        }
     }
 
 }
