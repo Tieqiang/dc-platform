@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+
+
 @RestController
 @RequestMapping(path="/api/geermu")
 public class HealthCardController {
@@ -27,7 +30,8 @@ public class HealthCardController {
     }
 
 
-    @PostMapping(path="card-family-search",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PostMapping(path="card-family-search",produces = "application/json",consumes = "application/json")
+    @ResponseBody
     public ResponseInterface cardFamilySearchMessage(@RequestBody CardFamilySearchMessage message) {
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_FAMILLY_SEARCH), message);
     }

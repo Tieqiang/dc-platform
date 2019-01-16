@@ -6,6 +6,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.webservices.client.WebServiceTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.cbor.MappingJackson2CborHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 @Configuration
@@ -24,6 +26,11 @@ public class SoapConfig {
 
 //        marshaller.setContextPath();
         return marshaller;
+    }
+
+    @Bean
+    public MappingJackson2HttpMessageConverter mappingJackson2CborHttpMessageConverter(){
+        return new MappingJackson2HttpMessageConverter();
     }
 
     @Bean

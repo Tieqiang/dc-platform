@@ -45,7 +45,7 @@ com:
         expire: 1000000
         mockUser: user
       cors:
-        allowedOrigins: http://localhost:8080,http://localhost:8081,http://localhost:8083,http://myweixin.tunnel.qydev.com,http://47.97.10.127:80,chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop
+        allowedOrigins: http://localhost:8080,http://localhost:8081,http://localhost:8083,http://myweixin.tunnel.qydev.com,http://47.97.10.127:80,chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop,chrome-extension://ecjfcmddigpdlehfhdnnnhfgihkmejin
         allowedMethods: GET,POST,PUT,DELETE
         allowedHeaders: content-type,authorization
       except-urls: /api/hello,api/hello1\
