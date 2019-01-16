@@ -26,14 +26,14 @@ public class HealthCardController {
 
     @PostMapping(path="card-binding-for-family",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface cardBindingForFamilyMessage(@RequestBody CardBindingForFamilyMessage message) {
-        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_BINDING_FOR_FAMILLY), message);
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_BINDING_FOR_FAMILY), message);
     }
 
 
     @PostMapping(path="card-family-search",produces = "application/json",consumes = "application/json")
     @ResponseBody
     public ResponseInterface cardFamilySearchMessage(@RequestBody CardFamilySearchMessage message) {
-        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_FAMILLY_SEARCH), message);
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_FAMILY_SEARCH), message);
     }
 
 
@@ -52,7 +52,7 @@ public class HealthCardController {
 
     @PostMapping(path="card-unbinding-for-family",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface cardUnbindingForFamilyMessage(@RequestBody CardUnbindingForFamilyMessage message) {
-        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_UNBINDING_FOR_FAMILLY), message);
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_UNBINDING_FOR_FAMILY), message);
     }
 
 
@@ -85,7 +85,7 @@ public class HealthCardController {
 
 
 
-    @PostMapping(path="qcode-search",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PostMapping(path="qcode_search",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface QcodeSearchMessage(@RequestBody QcodeSearchMessage message) {
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.QCODE_SEARCH), message);
     }
@@ -99,7 +99,7 @@ public class HealthCardController {
 
 
 
-    @PostMapping(path="temp-card-check",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PostMapping(path="temp_card_check",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface TempCardCheckMessage(@RequestBody TempCardCheckMessage message) {
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_CHECK), message);
     }

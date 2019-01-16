@@ -38,12 +38,12 @@ public class BussinessCode implements Serializable {
     /**
      * 健康卡绑定 （家庭成员）
      */
-    public static String CARD_BINDING_FOR_FAMILLY="RHC_E0007";
+    public static String CARD_BINDING_FOR_FAMILY="RHC_E0007";
 
     /**
      * 解除 （家庭成员）
      */
-    public static String CARD_UNBINDING_FOR_FAMILLY="RHC_E0008";
+    public static String CARD_UNBINDING_FOR_FAMILY="RHC_E0008";
     /**
      * 用卡记录
      */
@@ -52,7 +52,7 @@ public class BussinessCode implements Serializable {
     /**
      * 健康卡成员查询
      */
-    public static String CARD_FAMILLY_SEARCH="RHC_E0010";
+    public static String CARD_FAMILY_SEARCH="RHC_E0010";
     /***
      * 健康卡修改
      */
