@@ -2,9 +2,8 @@ package com.dchealth.healthcard.controller;
 
 import com.dchealth.healthcard.service.RHCMessageServerService;
 import com.dchealth.healthcard.vo.BussinessCode;
-import com.dchealth.healthcard.vo.MessageInterface;
+import com.dchealth.healthcard.vo.ResponseInterface;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
-import com.dchealth.healthcard.vo.jaxb.BaseResponse;
 import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,7 +21,7 @@ public class HealthCardController {
     private RHCMessageServerService rhcMessageServerService;
 
     @PostMapping(path="health-card",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public Object healthCard(@RequestBody CardRegistMessage message) {
+    public ResponseInterface healthCard(@RequestBody CardRegistMessage message) {
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), message);
     }
 }

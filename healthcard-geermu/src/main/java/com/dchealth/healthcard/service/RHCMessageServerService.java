@@ -33,7 +33,7 @@ public class RHCMessageServerService {
     @Autowired
     private SoapClient soapClient ;
 
-    public ResponseInterface RHCMessageServer(ActionInterface action, MessageInterface message) throws Exception {
+    public ResponseInterface RHCMessageServer(ActionInterface action, MessageInterface message){
 
         StringWriter actionWriter = new StringWriter();
         XMLResult actionResult = new XMLResult(actionWriter);
