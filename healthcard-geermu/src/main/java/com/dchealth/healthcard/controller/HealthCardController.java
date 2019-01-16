@@ -4,24 +4,103 @@ import com.dchealth.healthcard.service.RHCMessageServerService;
 import com.dchealth.healthcard.vo.BussinessCode;
 import com.dchealth.healthcard.vo.ResponseInterface;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
-import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
+import com.dchealth.healthcard.vo.jaxb.message.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@EnableSwagger2
 @RequestMapping(path="/api/geermu")
 public class HealthCardController {
     @Autowired
     private RHCMessageServerService rhcMessageServerService;
 
-    @PostMapping(path="health-card",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PostMapping(path="card-regist",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface healthCard(@RequestBody CardRegistMessage message) {
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), message);
     }
+
+
+    @PostMapping(path="card-binding-for-family",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface cardBindingForFamilyMessage(@RequestBody CardBindingForFamilyMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_BINDING_FOR_FAMILLY), message);
+    }
+
+
+    @PostMapping(path="card-family-search",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface cardFamilySearchMessage(@RequestBody CardFamilySearchMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_FAMILLY_SEARCH), message);
+    }
+
+
+    @PostMapping(path="card-modify",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface cardModifyMessage(@RequestBody CardModifyMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_MODIFY), message);
+    }
+
+
+    @PostMapping(path="card-regist-confirm",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface cardRegistConfirmMessage(@RequestBody CardRegistConfirmMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST_CONFIRM), message);
+    }
+
+
+
+    @PostMapping(path="card-unbinding-for-family",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface cardUnbindingForFamilyMessage(@RequestBody CardUnbindingForFamilyMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_UNBINDING_FOR_FAMILLY), message);
+    }
+
+
+
+    @PostMapping(path="card-unregist",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface CardUnregistMessage(@RequestBody CardUnregistMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_UNREGIST), message);
+    }
+
+
+
+    @PostMapping(path="card-use-record",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface CardUseRecordMessage(@RequestBody CardUseRecordMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_USE_RECORD), message);
+    }
+
+
+
+    @PostMapping(path="qcode-apply",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface QcodeApplyMessage(@RequestBody QcodeApplyMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.QCODE_APPLY), message);
+    }
+
+
+
+    @PostMapping(path="qcode-check",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface QcodeCheckMessage(@RequestBody QcodeCheckMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.QCODE_CHECK), message);
+    }
+
+
+
+    @PostMapping(path="qcode-search",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface QcodeSearchMessage(@RequestBody QcodeSearchMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.QCODE_SEARCH), message);
+    }
+
+
+
+    @PostMapping(path="temp-card-apply",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface TempCardApplyMessage(@RequestBody TempCardApplyMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_APPLY), message);
+    }
+
+
+
+    @PostMapping(path="temp-card-check",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseInterface TempCardCheckMessage(@RequestBody TempCardCheckMessage message) {
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_CHECK), message);
+    }
+
+
+
+
 }

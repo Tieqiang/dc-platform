@@ -6,7 +6,7 @@ import com.dchealth.healthcard.vo.MessageInterface;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "request")
-public class CardBindingForFamillyMessage implements MessageInterface {
+public class CardBindingForFamilyMessage implements MessageInterface {
     private String self_id_type;//本人证件类型|
     private String self_id_number;//本人证件号码|
     private String relation;//家庭成员关系代码|参照4.3 GB_T_4761_1984
@@ -23,7 +23,7 @@ public class CardBindingForFamillyMessage implements MessageInterface {
     private String photo_face;//家庭成员本人正面头像|图片格式为png，大小在200kb以内，需要转base64字符串
     private String address;//家庭成员户籍地址|
 
-    public CardBindingForFamillyMessage() {
+    public CardBindingForFamilyMessage() {
     }
 
     public String getSelf_id_type() {

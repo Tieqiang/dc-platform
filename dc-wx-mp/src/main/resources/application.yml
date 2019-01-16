@@ -24,7 +24,7 @@ spring:
         dialet: org.hibernate.dialect.MySQL5Dialect
   datasource:
     username: root
-    password: 123456
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
   devtools:
