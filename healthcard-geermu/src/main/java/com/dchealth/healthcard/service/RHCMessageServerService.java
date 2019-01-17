@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.oxm.Unmarshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,8 @@ public class RHCMessageServerService {
         RHCMessageServerResponse response = soapClient.RHCMessageServer(actionString, messageString);
         String aReturn = response.getReturn();
         logger.info("请求返回消息："+aReturn);
+        Object o = marshaller.unmarshal(new StreamSource( new StringReader(aReturn)));
+
         return (ResponseInterface) marshaller.unmarshal(new StreamSource( new StringReader(aReturn)));
 
     }

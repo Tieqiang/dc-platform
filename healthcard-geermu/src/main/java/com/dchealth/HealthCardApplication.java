@@ -5,7 +5,9 @@ import com.dchealth.healthcard.service.RHCMessageServerService;
 import com.dchealth.healthcard.vo.*;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
+import com.dchealth.healthcard.vo.jaxb.message.CardFamilySearchMessage;
 import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
+import com.dchealth.healthcard.vo.jaxb.message.GetNewBornMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -43,6 +45,10 @@ public class HealthCardApplication {
     public MessageInterface message(@PathVariable String message) throws Exception {
         if ("card".equalsIgnoreCase(message)) {
             return new CardRegistMessage();
+        } else if ("new-born".equalsIgnoreCase(message)) {
+            return new GetNewBornMessage();
+        } else if ("card-family-search".equalsIgnoreCase(message)) {
+            return new CardFamilySearchMessage();
         } else {
             return new CardRegistMessage();
         }

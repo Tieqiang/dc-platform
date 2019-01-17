@@ -1,11 +1,13 @@
 package com.dchealth.healthcard.vo.jaxb;
 
 import com.dchealth.healthcard.vo.ResponseInterface;
+import com.dchealth.healthcard.vo.jaxb.response.CardFamillySearchResponse;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @XmlRootElement(name = "response")
+@XmlSeeAlso(CardFamillySearchResponse.class)
 public class BaseResponse implements ResponseInterface {
 
     private String resultCode;

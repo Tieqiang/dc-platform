@@ -77,7 +77,7 @@ public class HealthCardController {
     }
 
 
-    @PostMapping(path = "qcode_search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    @PostMapping(path = "qcode-search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface QcodeSearchMessage(@RequestBody QcodeSearchMessage message) {
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.QCODE_SEARCH), message);
     }
@@ -97,24 +97,24 @@ public class HealthCardController {
 
     @PostMapping(path = "temp-card-binding", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface TempCardCheckBindingMessage(@RequestBody TempCardBindingMessage message) {
-        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_CHECK), message);
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_BINDING), message);
     }
 
 
     @PostMapping(path = "get-new-born", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface getNewBornMessage(@RequestBody GetNewBornMessage message) {
-        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_CHECK), message);
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.GET_NEWBORN), message);
     }
 
 
     @PostMapping(path = "card-regist-for-newborn", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface CardRegistForNewborn(@RequestBody CardRegistForNewborn message) {
-        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_CHECK), message);
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST_FOR_NEWBORN), message);
     }
 
     @PostMapping(path = "org-card-num-search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface OrgCardNumSearchMessage(@RequestBody OrgCardNumSearchMessage message) {
-        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_CHECK), message);
+        return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.ORG_CARD_NUM_SEARCH), message);
     }
 
 
