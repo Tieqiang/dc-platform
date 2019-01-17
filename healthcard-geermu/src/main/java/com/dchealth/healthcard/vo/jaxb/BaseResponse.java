@@ -1,13 +1,12 @@
 package com.dchealth.healthcard.vo.jaxb;
 
 import com.dchealth.healthcard.vo.ResponseInterface;
-import com.dchealth.healthcard.vo.jaxb.response.CardFamillySearchResponse;
+import com.dchealth.healthcard.vo.jaxb.response.*;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @XmlRootElement(name = "response")
-@XmlSeeAlso(CardFamillySearchResponse.class)
 public class BaseResponse implements ResponseInterface {
 
     private String resultCode;
@@ -19,7 +18,6 @@ public class BaseResponse implements ResponseInterface {
         this.result = "成功";
     }
 
-    private List<Object> entities;
 
     @XmlElement(name = "resultCode")
     public String getResultCode() {
@@ -46,14 +44,4 @@ public class BaseResponse implements ResponseInterface {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-
-    @XmlAnyElement(lax = true)
-    public List<Object> getEntities() {
-        return entities;
-    }
-
-    public void setEntities(List<Object> entities) {
-        this.entities = entities;
-    }
-
 }

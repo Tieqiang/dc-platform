@@ -5,7 +5,7 @@ import com.dchealth.healthcard.vo.MessageInterface;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "request")
-public class CardRegistForNewborn implements MessageInterface {
+public class CardRegistForNewbornMessage implements MessageInterface {
 
     private String name ;
     private String telephone ;
@@ -17,7 +17,7 @@ public class CardRegistForNewborn implements MessageInterface {
     private String address ;
     private String birthday ;
 
-    public CardRegistForNewborn() {
+    public CardRegistForNewbornMessage() {
     }
 
     public String getName() {

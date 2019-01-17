@@ -2,10 +2,11 @@ package com.dchealth.healthcard.vo.jaxb.response;
 
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement
+@XmlRootElement(name="response")
 public class TempCardApplyResponse extends BaseResponse {
 
     private String qr_code;//二维码内容|
@@ -15,8 +16,7 @@ public class TempCardApplyResponse extends BaseResponse {
         super();
     }
 
-
-
+    @XmlElement(name="qr_code")
     public String getQr_code() {
         return qr_code;
     }
@@ -24,7 +24,7 @@ public class TempCardApplyResponse extends BaseResponse {
     public void setQr_code(String qr_code) {
         this.qr_code = qr_code;
     }
-
+    @XmlElement(name="qr_code_imgtext")
     public String getQr_code_imgtext() {
         return qr_code_imgtext;
     }

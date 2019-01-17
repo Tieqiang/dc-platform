@@ -1,14 +1,15 @@
 package com.dchealth.healthcard.vo.jaxb.response;
 
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
+import com.dchealth.healthcard.vo.jaxb.EntitiesResponse;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 @XmlRootElement(name="response")
-public class CardFamillySearchResponse extends BaseResponse{
+public class CardFamillySearchResponse extends EntitiesResponse {
 
-    private int total;//家庭成员总数|
+    private String total;//家庭成员总数|
 
 
     public CardFamillySearchResponse() {
@@ -16,11 +17,11 @@ public class CardFamillySearchResponse extends BaseResponse{
     }
 
     @XmlElement(name="total")
-    public int getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 

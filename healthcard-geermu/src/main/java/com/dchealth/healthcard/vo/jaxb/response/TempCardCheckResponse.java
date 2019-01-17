@@ -2,10 +2,11 @@ package com.dchealth.healthcard.vo.jaxb.response;
 
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement
+@XmlRootElement(name="response")
 public class TempCardCheckResponse extends BaseResponse {
 
     private String name;//姓名|
@@ -16,7 +17,7 @@ public class TempCardCheckResponse extends BaseResponse {
     public TempCardCheckResponse() {
         super();
     }
-
+    @XmlElement(name="name")
     public String getName() {
         return name;
     }
@@ -24,7 +25,7 @@ public class TempCardCheckResponse extends BaseResponse {
     public void setName(String name) {
         this.name = name;
     }
-
+    @XmlElement(name="age")
     public String getAge() {
         return age;
     }
@@ -32,7 +33,7 @@ public class TempCardCheckResponse extends BaseResponse {
     public void setAge(String age) {
         this.age = age;
     }
-
+    @XmlElement(name="sex")
     public String getSex() {
         return sex;
     }

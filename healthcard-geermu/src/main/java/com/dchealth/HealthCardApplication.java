@@ -35,7 +35,7 @@ public class HealthCardApplication {
     @ResponseBody
     public ResponseInterface helloSoap() throws Exception {
 
-        ResponseInterface responseInterface = rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), new CardRegistMessage());
+        ResponseInterface responseInterface = rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST), new CardRegistMessage(),BaseResponse.class);
 //        return (PersonInfo) responseInterface.getTObject(new PersonInfo());
         return responseInterface;
     }

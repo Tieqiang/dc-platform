@@ -3,6 +3,7 @@ package com.dchealth;
 import com.dchealth.healthcard.vo.*;
 import com.dchealth.healthcard.vo.jaxb.ActionObject;
 import com.dchealth.healthcard.vo.jaxb.BaseResponse;
+import com.dchealth.healthcard.vo.jaxb.EntitiesResponse;
 import com.dchealth.healthcard.vo.jaxb.message.CardRegistMessage;
 import com.dchealth.healthcard.vo.jaxb.response.PersonInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -86,7 +87,7 @@ public class ActionObjectTest {
         JAXBContext jaxbContext = JAXBContext.newInstance(BaseResponse.class, PersonInfo.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        BaseResponse res = new BaseResponse();
+        EntitiesResponse res = new EntitiesResponse();
         PersonInfo p = new PersonInfo();
         p.setAddress("测试地址");
 //        res.setResEntity(p);
