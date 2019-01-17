@@ -12,6 +12,7 @@ public class TempCardApplyResponse extends BaseResponse {
     private String qr_code_imgtext;//二维码图片编码|二维码图片base64位编码，可以解码成图片 ,图片大小像素200*200
 
     public TempCardApplyResponse() {
+        super();
     }
 
 

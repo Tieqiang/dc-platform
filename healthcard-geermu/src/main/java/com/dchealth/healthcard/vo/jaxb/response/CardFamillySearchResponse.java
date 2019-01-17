@@ -10,6 +10,9 @@ public class CardFamillySearchResponse extends BaseResponse{
     private int total;//家庭成员总数|
 
 
+    public CardFamillySearchResponse() {
+        super();
+    }
 
     public int getTotal() {
         return total;

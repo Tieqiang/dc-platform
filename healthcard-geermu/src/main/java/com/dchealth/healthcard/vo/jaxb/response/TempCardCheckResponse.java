@@ -14,6 +14,7 @@ public class TempCardCheckResponse extends BaseResponse {
     private String clinicTime;//就诊时间|yyyy-MM-dd HH:mi:ss
 
     public TempCardCheckResponse() {
+        super();
     }
 
     public String getName() {
