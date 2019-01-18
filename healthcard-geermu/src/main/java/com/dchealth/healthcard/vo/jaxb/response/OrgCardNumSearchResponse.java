@@ -5,7 +5,7 @@ import com.dchealth.healthcard.vo.jaxb.BaseResponse;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name = "response")
 public class OrgCardNumSearchResponse extends BaseResponse {
 
     private String count ;
