@@ -54,7 +54,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-unregist", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "card-unregist", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface CardUnregistMessage(@RequestBody CardUnregistMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_UNREGIST), message,BaseResponse.class);
     }
@@ -65,7 +65,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-regist-confirm", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "card-regist-confirm", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface cardRegistConfirmMessage(@RequestBody CardRegistConfirmMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST_CONFIRM), message,EntitiesResponse.class);
     }
@@ -76,7 +76,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-binding-for-family", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "card-binding-for-family", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface cardBindingForFamilyMessage(@RequestBody CardBindingForFamilyMessage message) {
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_BINDING_FOR_FAMILY), message,EntitiesResponse.class);
     }
@@ -86,7 +86,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-unbinding-for-family", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "card-unbinding-for-family", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface cardUnbindingForFamilyMessage(@RequestBody CardUnbindingForFamilyMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_UNBINDING_FOR_FAMILY), message,BaseResponse.class);
     }
@@ -97,7 +97,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-use-record", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "card-use-record", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface CardUseRecordMessage(@RequestBody CardUseRecordMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_USE_RECORD), message,BaseResponse.class);
     }
@@ -107,8 +107,8 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-family-search", produces = "application/json", consumes = "application/json")
-    @ResponseBody
+//    @PostMapping(path = "card-family-search", produces = "application/json", consumes = "application/json")
+//    @ResponseBody
     public ResponseInterface cardFamilySearchMessage(@RequestBody CardFamilySearchMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_FAMILY_SEARCH), message, CardFamillySearchResponse.class);
     }
@@ -119,7 +119,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-modify", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "card-modify", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface cardModifyMessage(@RequestBody CardModifyMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_MODIFY), message,BaseResponse.class);
     }
@@ -130,7 +130,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "temp-card-apply", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "temp-card-apply", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface TempCardApplyMessage(@RequestBody TempCardApplyMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_APPLY), message, TempCardApplyResponse.class);
     }
@@ -140,12 +140,12 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "temp-card-check", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "temp-card-check", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface TempCardCheckMessage(@RequestBody TempCardCheckMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_CHECK), message, TempCardCheckResponse.class);
     }
 
-    @PostMapping(path = "qcode-search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "qcode-search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface QcodeSearchMessage(@RequestBody QcodeSearchMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.QCODE_SEARCH), message,BaseResponse.class);
     }
@@ -156,7 +156,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "temp-card-binding", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "temp-card-binding", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface TempCardCheckBindingMessage(@RequestBody TempCardBindingMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.TEMP_CARD_BINDING), message,BaseResponse.class);
     }
@@ -166,7 +166,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "get-new-born", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "get-new-born", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface getNewBornMessage(@RequestBody GetNewBornMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.GET_NEWBORN), message, NewBornResponse.class);
     }
@@ -176,7 +176,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "card-regist-for-newborn", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "card-regist-for-newborn", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface CardRegistForNewborn(@RequestBody CardRegistForNewbornMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.CARD_REGIST_FOR_NEWBORN), message,EntitiesResponse.class);
     }
@@ -186,7 +186,7 @@ public class HealthCardController {
      * @param message
      * @return
      */
-    @PostMapping(path = "org-card-num-search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+//    @PostMapping(path = "org-card-num-search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public ResponseInterface OrgCardNumSearchMessage(@RequestBody OrgCardNumSearchMessage message){
         return rhcMessageServerService.RHCMessageServer(new ActionObject(BussinessCode.ORG_CARD_NUM_SEARCH), message, OrgCardNumSearchResponse.class);
     }

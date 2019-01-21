@@ -73,33 +73,33 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.13.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>com.dchealth.healthcard.soapclient.generate</generatePackage>
-                    <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-                    <schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>
-                    <schemas>
-                        <schema>
-                            <url>http://sf201.frpzj.kskxs.com:8081/healthCard/services/elecHealthCardWebSevice?wsdl</url>
-                            <!--<url>http://192.168.40.142:8888/SingleLoginSrv.asmx?wsdl</url>-->
-                        </schema>
-                    </schemas>
-                    <!--<schemaIncludes>-->
-                        <!--<include>*.wsdl</include>-->
-                    <!--</schemaIncludes>-->
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.jvnet.jaxb2.maven2</groupId>-->
+                <!--<artifactId>maven-jaxb2-plugin</artifactId>-->
+                <!--<version>0.13.2</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<schemaLanguage>WSDL</schemaLanguage>-->
+                    <!--<generatePackage>com.dchealth.healthcard.soapclient.generate</generatePackage>-->
+                    <!--<generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
+                    <!--<schemaDirectory>${project.basedir}/src/main/resources/wsdl</schemaDirectory>-->
+                    <!--<schemas>-->
+                        <!--<schema>-->
+                            <!--<url>http://sf201.frpzj.kskxs.com:8081/healthCard/services/elecHealthCardWebSevice?wsdl</url>-->
+                            <!--&lt;!&ndash;<url>http://192.168.40.142:8888/SingleLoginSrv.asmx?wsdl</url>&ndash;&gt;-->
+                        <!--</schema>-->
+                    <!--</schemas>-->
+                    <!--&lt;!&ndash;<schemaIncludes>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<include>*.wsdl</include>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</schemaIncludes>&ndash;&gt;-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
         <finalName>dc-platform</finalName>
     </build>
