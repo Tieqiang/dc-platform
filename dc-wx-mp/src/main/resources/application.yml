@@ -24,7 +24,7 @@ spring:
         dialet: org.hibernate.dialect.MySQL5Dialect
   datasource:
     username: root
-    password: root
+    password: root1234
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
   devtools:
@@ -32,6 +32,8 @@ spring:
       enabled: true
       exclude: /static/**,/public/**,/resources/**
       log-condition-evaluation-delta: true
+  transaction:
+    rollback-on-commit-failure: true
 com:
   dchealth:
     dchealth:
@@ -47,4 +49,5 @@ com:
         allowedHeaders: content-type,authorization
       except-urls: /api/hello,api/hello1\
                      ,/swagger-ui.html,/**/*.js,/**/*.css,/**/*.png,/swagger-resources/configuration/ui,/v2/api-docs,/swagger-resources,/swagger-resources/configuration/security\
-                     ,/api/error,/api/wx,/wx/portal/**
+                     ,/api/error,/api/wx,/wx/portal/**,/test/**
+
