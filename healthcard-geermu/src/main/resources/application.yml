@@ -9,10 +9,11 @@ logging:
 soap:
   configs:
 #    default-uri: http://sf201.frpzj.kskxs.com:8081/healthCard/services/elecHealthCardWebSevice?wsdl
-    userName: test
-    password: test123
-    orgId: 630000000000
-    default-uri: http://localhost:8085/ws/point.wsdl
+    userName: GRMSDERMYY
+    password: GRMSDERMYY123
+    orgId: 630000000544
+#    default-uri: http://localhost:8085/ws/point.wsdl
+    default-uri: http://130.130.3.111:8080/healthCard/services/elecHealthCardWebSevice?wsdl
 server:
   port: 8083
 debug: false
