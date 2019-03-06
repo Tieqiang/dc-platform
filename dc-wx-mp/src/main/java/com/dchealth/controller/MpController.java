@@ -21,5 +21,4 @@ public class MpController {
     public WxUserInfo getWxUserInfo(@RequestBody(required = false) String url,@PathVariable String appId) throws WxErrorException {
         return mpUserService.getWxUserInfo(url,appId);
     }
-
 }

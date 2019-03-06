@@ -96,7 +96,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().disable() ;
+        /**
+         * 在spring security 中如果不打开HttpSecurity 的跨域允许。则会使用spring MVC默认的跨域处理。
+         * 打开后则使用CorsFilter对跨域进行处理，并处理好跨域的请求。然后将跨域请求返回回去。
+         */
+        http.cors();
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry expressionInterceptUrlRegistry =
                 http.exceptionHandling()
                         .accessDeniedHandler(accessDeniedHandler)
